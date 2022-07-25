@@ -53,8 +53,9 @@
         </Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
 
-            <Button Margin="20,0,0,0" Content="Наличные" Width="100" Height="100"/>
-            <Button Margin="20,0,0,0" Content="Карта" Width="100" Height="100"/>
+            <Button Margin="20,10,0,0" Content="Наличные" Width="110" Height="90"/>
+            <Button Margin="5,10,0,0" Content="Карта" Width="110" Height="90"/>
+            <Button Margin="5,10,0,0" Content="Расчитать скидку" Width="110" Height="90"/>
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -66,9 +67,9 @@
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Row="3">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBox Width="600" Height="70" Margin="20,0,20,0" 
+                <TextBox Width="600" Height="70" Margin="20,0,20,0" Text="{Binding Barcode, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="18" VerticalContentAlignment="Center"></TextBox>
-                <Button Content="Добавить" Width="300" Height="70"/>
+                <Button Content="Добавить" Width="300" Height="70" Command="{Binding AddProductCheque}"/>
                 <Label Content="Поиск по штрихкоду" Margin="20,0,20,0" FontSize="18" VerticalAlignment="Center"/>
             </StackPanel>
         </Border>
