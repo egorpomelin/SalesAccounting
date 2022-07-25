@@ -2,7 +2,7 @@
 
 using System.Windows.Input;
 
-namespace newApp.Infrastructure.Commands.Base
+namespace SalesAccounting.Infrastructure.Commands.Base
 {
     internal abstract class Command : ICommand
     {

@@ -1,18 +1,21 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using RabotaWpf.ViewModel.Base;
+using SalesAccounting.ViewModel.Base;
 using SalesAccounting.View.ViewPage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using SalesAccounting.Infrastructure;
+using SalesAccounting.View;
 
 namespace SalesAccounting.ViewModel
 {
     internal class MainWindowViewModel : ViewModelBase
     {
+
+        public MainWindowViewModel()
+        {
+            OpenSalesAccounting = new command(OnOpenSalesAccountingExecuted, CanOpenSalesAccountingExecuted);
+        }
 
         string title = "Sales Accounting";
         public string Title
@@ -41,5 +44,15 @@ namespace SalesAccounting.ViewModel
         {
             get { return new RelayCommand(() => CurPage = settingsPage); }
         }
+
+        public ICommand OpenSalesAccounting { get; }
+
+        private void OnOpenSalesAccountingExecuted(object p)
+        {
+            Window wd = new SalesAccountingWindow();
+            wd.Show();
+        }
+
+        private bool CanOpenSalesAccountingExecuted(object p) => true;
     }
 }

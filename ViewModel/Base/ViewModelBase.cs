@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace RabotaWpf.ViewModel.Base
+namespace SalesAccounting.ViewModel.Base
 {
 
 
