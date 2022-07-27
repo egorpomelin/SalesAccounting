@@ -1,23 +1,20 @@
 ﻿using MySql.Data.MySqlClient;
 using SalesAccounting.Interfece;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
 
 namespace SalesAccounting.Infrastructure
 {
     internal class ConnectionDB : IConnectionDB
     {
-        MySqlConnection connection = new MySqlConnection($"server={Properties.Settings.Default.serverAddress};username={Properties.Settings.Default.user};password={Properties.Settings.Default.password};database={Properties.Settings.Default.nameDB}");
-        
-        public void closeCOnnection(string stringConnection)
+        static MySqlConnection connection = new MySqlConnection($"server={Properties.Settings.Default.serverAddress};username={Properties.Settings.Default.user};password={Properties.Settings.Default.password};database={Properties.Settings.Default.nameDB}");
+
+        public void closeCOnnection()
         {
             try
             {
-                if (connection.State == System.Data.ConnectionState.Open)
+                if (connection.State == ConnectionState.Open)
                 {
                     connection.Close();
                 }
@@ -28,11 +25,11 @@ namespace SalesAccounting.Infrastructure
             }
         }
 
-        public void openCOnnection(string stringConnection)
+        public void openCOnnection()
         {
             try
             {
-                if (connection.State == System.Data.ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
                 }
@@ -53,6 +50,27 @@ namespace SalesAccounting.Infrastructure
             {
                 MessageBox.Show(ex.Message, "Нет подключения");
 
+                return null;
+            }
+        }
+
+        public DataTable returnProduct(string name, string barcode)
+        {
+            try
+            {
+                openCOnnection();
+                connection = returnConnection();
+                string sql = $"SELECT * FROM `товары` WHERE CONCAT(`{name}`) LIKE '{barcode}'";
+                MySqlDataAdapter command = new MySqlDataAdapter(sql, connection);
+                DataTable product = new DataTable();
+                command.Fill(product);
+                closeCOnnection();
+                return product;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Нет подключения");
                 return null;
             }
         }

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="serverAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">lochalhost</Value>
+      <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="user" Type="System.String" Scope="User">
       <Value Profile="(Default)">root</Value>

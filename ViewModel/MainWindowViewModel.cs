@@ -1,11 +1,11 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using SalesAccounting.ViewModel.Base;
+using SalesAccounting.Infrastructure;
+using SalesAccounting.View;
 using SalesAccounting.View.ViewPage;
+using SalesAccounting.ViewModel.Base;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using SalesAccounting.Infrastructure;
-using SalesAccounting.View;
 
 namespace SalesAccounting.ViewModel
 {
@@ -28,7 +28,7 @@ namespace SalesAccounting.ViewModel
         private Page indexPage = new IndexPage();
         private Page settingsPage = new SettingsPage();
         private Page _CurPage = new IndexPage();
-        
+
         public Page CurPage
         {
             get => _CurPage;

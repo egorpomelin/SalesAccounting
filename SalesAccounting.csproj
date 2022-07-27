@@ -8,12 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
-    <PackageReference Include="MySql.Data" Version="8.0.29" />
+    <PackageReference Include="MySql.Data" Version="8.0.30" />
   </ItemGroup>
 
   <ItemGroup>

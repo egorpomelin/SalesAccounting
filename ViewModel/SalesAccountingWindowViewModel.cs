@@ -1,10 +1,7 @@
 ﻿using SalesAccounting.Infrastructure;
+using SalesAccounting.Model;
 using SalesAccounting.ViewModel.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows.Input;
 
 namespace SalesAccounting.ViewModel
@@ -24,21 +21,46 @@ namespace SalesAccounting.ViewModel
             set { Set(ref title, value); }
         }
 
-        int barcode = 0;
-        public int Barcode
+        string barcode = "";
+        public string Barcode
         {
             get { return barcode; }
             set { Set(ref barcode, value); }
         }
 
-        public ConnectionDB DB = new ConnectionDB();
+        DataTable product = new DataTable();
+        public DataTable Product
+        {
+            get { return product; }
+            set { Set(ref product, value); }
+        }
+
+        int countProduct;//количество продуктов
+        public int CountProduct
+        {
+            get { return countProduct; }
+            set { Set(ref countProduct, value);  }
+        }
+
+        int amount;//сумма покупки без скидки
+        public int Amount
+        {
+            get { return amount; }
+            set { Set(ref amount, value); }
+        }
+
+        ConnectionDB DB = new ConnectionDB();
+        Cheque cheque = new Cheque();
 
         public ICommand AddProductCheque { get; }//добавление товара в чек
 
         private void OnAddProductChequeExecuted(object p)
         {
             
-        }
+            Product = cheque.addListProduct("штрихкод", barcode);
+            CountProduct = cheque.returnCountProduct();
+            Amount = cheque.returnAmount();
+            Barcode = "";        }
 
         private bool CanAddProductChequeExecuted(object p) => true;
 

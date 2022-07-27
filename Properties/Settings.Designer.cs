@@ -25,7 +25,7 @@ namespace SalesAccounting.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("lochalhost")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
         public string serverAddress {
             get {
                 return ((string)(this["serverAddress"]));
