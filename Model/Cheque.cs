@@ -84,18 +84,11 @@ namespace SalesAccounting.Model
                 switch (colum)
                 {
                     case 0:
-                        DataTable tableProduct2 = new DataTable();//список продуктов
-                        tableProduct2 = TableProduct.Clone();
+                        
+                        DataTable prod = db.returnProduct(name, barcode);
 
-                        colColumn.DefaultValue = 1;
-
-                        DataTable prod = db.returnProduct(name, Convert.ToString(barcode));
-
-                        tableProduct2.Rows.Add(new object[] { prod.Rows[0].Field<string>(1), prod.Rows[0].Field<string>(2), prod.Rows[0].Field<string>(3),
+                        TableProduct.Rows.Add(new object[] { prod.Rows[0].Field<string>(1), prod.Rows[0].Field<string>(2), prod.Rows[0].Field<string>(3),
                             prod.Rows[0].Field<string>(4), prod.Rows[0].Field<int>(5), prod.Rows[0].Field<int>(6), 1, prod.Rows[0].Field<int>(7) });
-
-                        TableProduct.Rows.Add(new object[] { tableProduct2.Rows[0].Field<string>(0), tableProduct2.Rows[0].Field<string>(1), tableProduct2.Rows[0].Field<string>(2),
-                            tableProduct2.Rows[0].Field<string>(3), tableProduct2.Rows[0].Field<int>(4), tableProduct2.Rows[0].Field<int>(5), tableProduct2.Rows[0].Field<int>(6), tableProduct2.Rows[0].Field<int>(7)});
                         break;
                 }
                 return TableProduct;
