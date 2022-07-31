@@ -41,8 +41,10 @@
                 </StackPanel>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="4">
-                <StackPanel VerticalAlignment="Center">
-                    <Label Grid.Row="4" Content="Сумма покупки со скидкой" 
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Grid.Row="4" Content="Сумма покупки со скидкой: " 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                    <Label Grid.Row="4" Content="{Binding AmountSales}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
                 </StackPanel>
             </Border>
@@ -88,9 +90,11 @@
                    HorizontalAlignment="Left" FontSize="14" Margin="0,0,0,5"/>
                     <Label Grid.Column="3" Content="Наименование" VerticalAlignment="Bottom"
                    HorizontalAlignment="Left" FontSize="14" Margin="0,0,0,5"/>
-                    <Label Grid.Column="4" Content="количество" VerticalAlignment="Bottom"
+                    <Label Grid.Column="4" Content="Остаток" VerticalAlignment="Bottom"
                    HorizontalAlignment="Left" FontSize="14" Margin="0,0,0,5"/>
                     <Label Grid.Column="5" Content="Цена" VerticalAlignment="Bottom"
+                   HorizontalAlignment="Left" FontSize="14" Margin="0,0,0,5"/>
+                    <Label Grid.Column="6" Content="количество" VerticalAlignment="Bottom"
                    HorizontalAlignment="Left" FontSize="14" Margin="0,0,0,5"/>
 
                     <Grid.ColumnDefinitions>
@@ -98,6 +102,7 @@
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="110"/>
                         <ColumnDefinition Width="900"/>
+                        <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
@@ -116,9 +121,10 @@
                                     <ColumnDefinition Width="900"/>
                                     <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Focusable="False" x:Name="nameS" Text="{Binding штрихкод}" Grid.Column="0"
+                                <TextBlock Focusable="False" x:Name="nameS" Text="{Binding [0]}" Grid.Column="0"
                                    ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
 
                                 </TextBlock>
@@ -132,7 +138,9 @@
                                    ></TextBlock>
                                 <TextBlock Focusable="False" Margin="20,0,0,0" Text="{Binding цена}" Grid.Column="5" 
                                    ></TextBlock>
-                                
+                                <TextBlock Focusable="False" Margin="20,0,0,0" Text="{Binding кол}" Grid.Column="6" 
+                                   ></TextBlock>
+
                             </Grid>
                         </DataTemplate>
 

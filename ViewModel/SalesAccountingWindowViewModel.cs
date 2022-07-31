@@ -21,7 +21,7 @@ namespace SalesAccounting.ViewModel
             set { Set(ref title, value); }
         }
 
-        string barcode = "";
+        string barcode;
         public string Barcode
         {
             get { return barcode; }
@@ -49,6 +49,13 @@ namespace SalesAccounting.ViewModel
             set { Set(ref amount, value); }
         }
 
+        int amountSales;//сумма покупки со скидки
+        public int AmountSales
+        {
+            get { return amountSales; }
+            set { Set(ref amountSales, value); }
+        }
+
         ConnectionDB DB = new ConnectionDB();
         Cheque cheque = new Cheque();
 
@@ -56,11 +63,13 @@ namespace SalesAccounting.ViewModel
 
         private void OnAddProductChequeExecuted(object p)
         {
-            
+
             Product = cheque.addListProduct("штрихкод", barcode);
             CountProduct = cheque.returnCountProduct();
             Amount = cheque.returnAmount();
-            Barcode = "";        }
+            AmountSales = cheque.calculationDiscont();
+            Barcode = "";
+        }
 
         private bool CanAddProductChequeExecuted(object p) => true;
 
